@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npm-run-all sass-build --parallel sass-watch prefix-build",
+    "sass-build": "node-sass assets/scss -o assets/css --output-style compressed",
+    "sass-watch": "node-sass assets/scss -o assets/css -w --output-style compressed",
+    "prefix-build": "postcss assets/css/crej.css -u autoprefixer -o assets/css/crej.min.css -w"
   },
   "repository": {
     "type": "git",
@@ -15,5 +19,11 @@
   "bugs": {
     "url": "https://github.com/SpencerCloud/spencer-cloud-site-theme/issues"
   },
-  "homepage": "https://github.com/SpencerCloud/spencer-cloud-site-theme#readme"
+  "homepage": "https://github.com/SpencerCloud/spencer-cloud-site-theme#readme",
+  "dependencies": {
+    "autoprefixer": "^10.4.2",
+    "node-sass": "^7.0.1",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.6"
+  }
 }
